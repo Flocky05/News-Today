@@ -31,8 +31,8 @@ const loadNews = (category_id) => {
         .then(data => {
             data.data.forEach(data => {
                 console.log(data)
-                const span = document.createElement('span');
-                span.innerHTML = `
+                const div = document.createElement('div');
+                div.innerHTML = `
                 <div class="card card-side bg-base-100 shadow-xl">
                 <figure><img src="${data.thumbnail_url
                     }" alt="Movie"></figure>
@@ -82,7 +82,7 @@ const loadNews = (category_id) => {
                 </div>
             </div>
                 `;
-                document.getElementById('news-container').appendChild(span);
+                document.getElementById('news-container').appendChild(div);
             })
         })
 }
