@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="bg-slate-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <script src="https://kit.fontawesome.com/1d5cf12cc1.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="m-20">
+    <header>
+        <section>
+            <div class="navbar m-auto border-y-2 bg-zinc-100">
+                <div class="flex-1">
+                    <a class="btn btn-ghost normal-case text-xl bg-red-600 text-white">News</a>
+                    <a class="btn btn-ghost normal-case text-xl text-red-700">Today</a>
+                </div>
+                <div class="flex-none gap-2">
+                    <div>
+                        <a class="btn btn-ghost normal-case text-xl text-violet-700">News</a>
+                        <a class="btn btn-ghost normal-case text-xl">Blog</a>
+                    </div>
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                            <div class="w-10 rounded-full">
+                                <img src="images/rakibul.jpg" />
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section class=" mx-40 m-auto">
+            <div class="my-8">
+                <p class="text-3xl font-medium">Difference Between var, let, and const in JavaScript</p>
+                <p class="text-xl ">The differences between var, let, and const variable declaration in JavaScript
+                    include:
+                    Variables
+                    declared
+                    with var and const are scoped to the immediate function body. Variables declared with the var
+                    keyword
+                    are
+                    hoisted. Hoisting means that the variable can be accessed in their enclosing scope even before they
+                    are
+                    declared. Variables declared with the let keyword are block-scoped, which means the variables will
+                    have
+                    scope to the immediate enclosing block.</p>
+
+            </div>
+            <div class="my-4">
+                <p class="text-3xl font-medium">Difference Between Arrow Function and Regular Function</p>
+                <p class="text-xl "> A programmer can get the same result as regular functions by writing a few lines of
+                    code using arrow
+                    functions. Curly brackets are not required if only one expression is present.
+                    arguments object inside the regular functions contains the list of arguments.
+                    Inside of a regular JavaScript function, this value is dynamic. The dynamic context means that the
+                    value
+                    of
+                    this depends on how the function is invoked.
+                    The behavior of this inside of an arrow, function differs considerably from the regular function’s
+                    this
+                    behavior as an arrow function does not have its own “this” keyword.
+                    Regular functions are constructible and callable. They can be called using the new keyword.
+                    But, the arrow functions are only callable and not constructible, i.e., arrow functions can never be
+                    used as
+                    constructor functions.</p>
+
+            </div>
+            <div class="my-4">
+                <p class="text-3xl font-medium">Difference between forEach, map, filter, and find in JavaScript.</p>
+                <p class="text-xl "> The most compelling case for using .forEach() in favor of a for loop is that it’s
+                    easier. Even though
+                    it’s
+                    the same number of lines, there’s less setup. If the fact that it’s easier, isn’t enough for you…
+                    there
+                    is
+                    also a technical reason to use .forEach() in favor of for loops. It has to do with the scoping of
+                    the
+                    code.
+                    .map() when you want to transform elements in an array.
+                    .filter() when you want to select a subset of multiple elements from an array.
+                    .filter() when you want to select a subset of multiple elements from an array.</p>
+            </div>
+
+            <div class="my-4">
+                <p class="text-3xl font-medium">Why should you use template string?</p>
+                <p class="text-xl ">
+                    Template strings are a powerful feature of modern JavaScript released in ES6. It lets us
+                    insert/interpolate
+                    variables and expressions into strings without needing to concatenate like in older versions of
+                    JavaScript.
+                    It allows us to create strings that are complex and contain dynamic elements.
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-orange-200 footer footer-center p-8 bg-slate-900 text-base-content text-white">
+        <div>
+            <p>Copyright © 2022 - rakibulislam</p>
+        </div>
+        <div class="flex justify-between text-xl gap-6">
+            <a href="https://www.facebook.com/rokibui.islam"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com/MdRakib41325979"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com/rakibul_01islam/"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </footer>
+</body>
+
+</html>

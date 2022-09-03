@@ -1,5 +1,5 @@
 const $ = id => document.getElementById(id)
-const loadNews = () => {
+const loadCategories = () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     fetch(url)
         .then(res => res.json())
@@ -10,20 +10,27 @@ const loadNews = () => {
                 span.className = 'btn btn-ghost'
                 span.innerText = data.category_name;
                 document.getElementById('category-container').appendChild(span);
+                span.addEventListener('click', function () {
+
+                    loadNews(data.category_id)
+                })
 
             })
         })
 }
-loadNews();
+loadCategories();
 
 
-const loadCategory = () => {
-    const url = `https://openapi.programming-hero.com/api/news/category/08`;
+
+const loadNews = (category_id) => {
+
+    document.getElementById('news-container').innerHTML = ` `
+    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     fetch(url)
         .then(res => res.json())
         .then(data => {
             data.data.forEach(data => {
-                // console.log(data)
+                console.log(data)
                 const span = document.createElement('span');
                 span.innerHTML = `
                 <div class="card card-side bg-base-100 shadow-xl">
@@ -32,7 +39,7 @@ const loadCategory = () => {
                 <div class="card-body">
                     <h2 class="card-title">${data.title}</h2>
                     <p>${data.details.slice(0, 150)}</p>
-                    <div class="card-actions justify-between">
+                    <div class="card-actions justify-between items-center">
                         <div class="flex justify-between">
                             <img src="${data.author.img}"
                                 class="w-12 rounded-full h-12 ring-2 ring-pink-500" alt="">
@@ -41,7 +48,7 @@ const loadCategory = () => {
                                 <p>${data.author.published_date.slice(0, 10)}</p>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center">
+                        <div class="flex justify-between items-center space-x-2">
                             <i class="fa-regular fa-eye"></i>
                             <div>
                                 <p>${data.total_view}</p>
@@ -55,7 +62,22 @@ const loadCategory = () => {
                             <i class="fa-regular fa-star"></i>
                             <i class="fa-regular fa-star"></i>
                         </div>
-                        <button class="text-violet-700"><i class="fa-solid fa-arrow-right"></i></button>
+<label for="modal${data._id}" class="text-violet-700 modal-button cursor-pointer text-xl"><i class="fa-solid fa-arrow-right"></i></label>
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="modal${data._id}" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box w-11/12 max-w-5xl p-0">
+    <figure><img src="${data.image_url}" alt="Movie"></figure>
+    <div class="p-4">
+    <h3 class="font-bold text-lg">${data.title}</h3>
+    <p class="py-4">${data.details}</p>
+    </div>
+    <div class="modal-action">
+      <label for="modal${data._id}" class="btn m-10 px-6 py-2">Yay!</label>
+    </div>
+  </div>
+</div>
                     </div>
                 </div>
             </div>
@@ -65,4 +87,3 @@ const loadCategory = () => {
         })
 }
 
-loadCategory();
