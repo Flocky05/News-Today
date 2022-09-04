@@ -82,7 +82,7 @@ const loadNews = ({ category_id, category_name }) => {
                             <i class="fa-regular fa-star"></i>
                             <i class="fa-regular fa-star"></i>
                         </div>
-<label for="modal${data._id}" class="text-violet-700 modal-button cursor-pointer text-xl"><i class="fa-solid fa-arrow-right"></i></label>
+<label for="modal${data._id}" class="text-red-600 modal-button cursor-pointer text-xl"><i class="fa-solid fa-arrow-right"></i></label>
 
                             <!-- Put this part before </body> tag -->
                             <input type="checkbox" id="modal${data._id}" class="modal-toggle" />
@@ -94,7 +94,7 @@ const loadNews = ({ category_id, category_name }) => {
                                 <p class="py-4">${data.details}</p>
                                 </div>
                                 <div class="modal-action">
-                                <label for="modal${data._id}" class="btn m-10 px-6 py-2"><i class="fa-solid fa-xmark"></i></label>
+                                <label for="modal${data._id}" class="btn bg-red-600 m-10 px-6 py-2"><i class="fa-solid fa-xmark"></i></label>
                                 </div>
                             </div>
                             </div>
