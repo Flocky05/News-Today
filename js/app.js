@@ -54,7 +54,7 @@ const loadNews = ({ category_id, category_name }) => {
                     view = 'Nothing found';
                 }
                 div.innerHTML = `
-                <div class="card card-side bg-base-100 shadow-xl">
+                <div class="card flex flex-col md:flex-row card-side bg-base-100 shadow-xl">
                 <figure><img src="${data.thumbnail_url
                     }" alt="Movie"></figure>
                 <div class="card-body">
