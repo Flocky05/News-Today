@@ -6,11 +6,11 @@ const loadCategories = () => {
         .then(data => {
             // console.log(data)
             data.data.news_category.forEach(data => {
-                const span = document.createElement('span');
-                span.className = 'btn btn-ghost'
-                span.innerText = data.category_name;
-                document.getElementById('category-container').appendChild(span);
-                span.addEventListener('click', function () {
+                const button = document.createElement('button');
+                button.className = 'btn btn-ghost hover:bg-blue-300 focus:bg-blue-300'
+                button.innerText = data.category_name;
+                document.getElementById('category-container').appendChild(button);
+                button.addEventListener('click', function () {
                     toggleSpinner(true);
                     loadNews(data);
 
