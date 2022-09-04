@@ -12,8 +12,9 @@ const loadCategories = () => {
                 document.getElementById('category-container').appendChild(span);
                 span.addEventListener('click', function () {
                     toggleSpinner(true);
-                    loadNews(data.category_id)
+                    loadNews(data);
                     toggleSpinner(false);
+
                 })
 
             })
@@ -25,7 +26,7 @@ loadCategories();
 
 
 
-const loadNews = (category_id) => {
+const loadNews = ({ category_id, category_name }) => {
 
 
     document.getElementById('news-container').innerHTML = ` `
@@ -35,8 +36,10 @@ const loadNews = (category_id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => {
+            document.getElementById('count-item').innerText = data.data.length;
+            document.getElementById('category-name').innerText = category_name;
             data.data.forEach(data => {
-                console.log(data)
+                // console.log(data);
                 const div = document.createElement('div');
                 div.innerHTML = `
                 <div class="card card-side bg-base-100 shadow-xl">
@@ -91,17 +94,18 @@ const loadNews = (category_id) => {
             })
         })
 
+
 }
 
 
 const toggleSpinner = isloading => {
     const loaderSection = document.getElementById('loader');
-    setTimeout(() => {
-        if (isloading) {
-            loaderSection.classList.remove('hidden')
-        } else {
-            loaderSection.classList.add('hidden')
-        }
-    }, 500)
 
+    if (isloading) {
+        loaderSection.classList.remove('hidden')
+    } else {
+        loaderSection.classList.add('hidden')
+    }
 }
+
+
