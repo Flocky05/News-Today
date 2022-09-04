@@ -13,7 +13,7 @@ const loadCategories = () => {
                 span.addEventListener('click', function () {
                     toggleSpinner(true);
                     loadNews(data);
-                    toggleSpinner(false);
+
 
                 })
 
@@ -36,11 +36,23 @@ const loadNews = ({ category_id, category_name }) => {
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            document.getElementById('count-item').innerText = data.data.length;
-            document.getElementById('category-name').innerText = category_name;
+            if (data.data.length <= 0) {
+                document.getElementById('message').innerText = "No Data found";
+            } else {
+                document.getElementById('message').innerText = `${data.data.length} items found for category ${category_name}`;
+            }
+            data.data.sort((a, b) => b.total_view
+                - a.total_view
+            )
+            //console.log(data);
             data.data.forEach(data => {
-                // console.log(data);
                 const div = document.createElement('div');
+                let view;
+                if (data.total_view || data.total_view === 0) {
+                    view = data.total_view;
+                } else {
+                    view = 'Nothing found';
+                }
                 div.innerHTML = `
                 <div class="card card-side bg-base-100 shadow-xl">
                 <figure><img src="${data.thumbnail_url
@@ -53,14 +65,14 @@ const loadNews = ({ category_id, category_name }) => {
                             <img src="${data.author.img}"
                                 class="w-12 rounded-full h-12 ring-2 ring-pink-500" alt="">
                             <div class="ml-4">
-                                <p class="font-medium">${data.author.name}</p>
+                                <p class="font-medium">${data.author.name ? data.author.name : 'Unknown'}</p>
                                 <p>${data.author.published_date?.slice(0, 10)}</p>
                             </div>
                         </div>
                         <div class="flex justify-between items-center space-x-2">
                             <i class="fa-regular fa-eye"></i>
                             <div>
-                                <p class="font-bold">${data.total_view}</p>
+                                <p class="font-bold">${view}</p>
                             </div>
                         </div>
                         <div class="text-xl">
@@ -92,15 +104,15 @@ const loadNews = ({ category_id, category_name }) => {
                 `;
                 document.getElementById('news-container').appendChild(div);
             })
+            toggleSpinner(false);
         })
-
 
 }
 
 
 const toggleSpinner = isloading => {
     const loaderSection = document.getElementById('loader');
-
+    console.log("Emon")
     if (isloading) {
         loaderSection.classList.remove('hidden')
     } else {
